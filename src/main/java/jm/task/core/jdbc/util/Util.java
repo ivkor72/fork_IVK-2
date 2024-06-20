@@ -16,17 +16,17 @@ public class Util {
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "IVK_student_kata-71";
 
-    Connection connection;
 
-    public Connection getConnection(){
+    Connection connection = null;
 
-        try {
+    public Connection getConnection()  {
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD)) {
             Class.forName(DB_DRIVER);
-            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             System.out.println("Connection is successful");
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-           // System.out.println("Connection failed");
+   //         e.printStackTrace();
+           System.out.println("Connection failed");
         }
     return connection;
     }
