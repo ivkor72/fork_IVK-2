@@ -14,20 +14,34 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
 
 
-    public void createUsersTable() {
+    public void createUsersTable() throws SQLException {
+
+        String sql = "CREATE TABLE IF NOT EXISTS users. users_table(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(45) NOT NULL, lastName VARCHAR(45) NOT NULL, age VARCHAR(45) NOT NULL)";
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.println("The table 'users_table' has been created");
+        } catch (SQLException e) {
+            System.out.println("The table has not been created!");
+        }
+
 
     }
 
-    public void dropUsersTable() {
-
+    public void dropUsersTable() throws SQLException {
+        String sql = "DROP TABLE users. users_table";
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+            System.out.println("The table 'users_table' has been deleted");
+        } catch (SQLException e) {
+            System.out.println("The table 'users_table' has not been deleted!");
+        }
     }
-
     public void saveUser(String name, String lastName, byte age) throws SQLException {
 
 
-        String sql = "INSERT INTO users_table (id, name, lastname, age) VALUES (default, ?, ?, ?)";
+        String sql = "INSERT INTO users_table (id, name, lastName, age) VALUES (default, ?, ?, ?)";
 
-        ;
+
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(2, name);
             preparedStatement.setString(3, lastName);
@@ -76,6 +90,14 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     }
 
     public void cleanUsersTable() {
+        String sql = "DELETE FROM users_table";
 
+        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(sql);
+
+        } catch (SQLException e) {
+
+        }
     }
+
 }
