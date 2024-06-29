@@ -21,7 +21,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             ResultSet resultSet = statement.executeQuery(sql);
             System.out.println("The table 'users_table' has been created");
         } catch (SQLException e) {
-            System.out.println("The table has not been created!");
+            System.out.println("The table has not been created!" + e);
         }
 
 
@@ -33,7 +33,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             ResultSet resultSet = statement.executeQuery(sql);
             System.out.println("The table 'users_table' has been deleted");
         } catch (SQLException e) {
-            System.out.println("The table 'users_table' has not been deleted!");
+            System.out.println("The table 'users_table' has not been deleted!" + e);
         }
     }
     public void saveUser(String name, String lastName, byte age) throws SQLException {

@@ -17,19 +17,20 @@ public class Util {
     private static final String DB_PASSWORD = "IVK_student_kata-71";
 
 
-    Connection connection = null;
+ //
 
-    public Connection getConnection()  {
+    public Connection getConnection() throws SQLException {
 
-        try  {
-            Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        try (connection)  {
             Class.forName(DB_DRIVER);
             System.out.println("Connection is successful");
         } catch (ClassNotFoundException | SQLException e) {
    //         e.printStackTrace();
            System.out.println("Connection failed");
         }
-    return connection;
+
+        return connection;
     }
 
 } //util
