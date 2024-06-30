@@ -30,8 +30,9 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     public void dropUsersTable() throws SQLException {
         String sql = "DROP TABLE users. users_table";
-        try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
+        try (Connection connection = getConnection()) {
             if (connection.isClosed())  System.out.println("Connection is closed");
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             System.out.println("The table 'users_table' has been deleted");
         } catch (SQLException e) {
