@@ -14,10 +14,10 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         // реализуйте алгоритм здесь
 
-        Util con = new Util();
-        con.getConnection();
+     //   Util con = new Util();
+     //   con.getConnection();
 
-        UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+        UserDao userDaoJDBC = new UserDaoJDBCImpl();
 
         userDaoJDBC.createUsersTable();
 
