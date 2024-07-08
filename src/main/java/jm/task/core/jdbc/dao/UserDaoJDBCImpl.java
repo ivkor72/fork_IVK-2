@@ -19,7 +19,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         String sql = "CREATE TABLE IF NOT EXISTS users.users_table(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(45) NOT NULL, lastName VARCHAR(45) NOT NULL, age VARCHAR(45) NOT NULL)";
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
             if (connection.isClosed())  System.out.println("Connection is closed");
-            ResultSet resultSet = statement.executeQuery(sql);
+            int resultSet = statement.executeUpdate(sql);
             System.out.println("The table 'users_table' has been created");
         } catch (SQLException e) {
             System.out.println("The table has not been created!" + e);
@@ -33,7 +33,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         try (Connection connection = getConnection()) {
             if (connection.isClosed())  System.out.println("Connection is closed");
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            int resultSet = statement.executeUpdate(sql);
             System.out.println("The table 'users_table' has been deleted");
         } catch (SQLException e) {
             System.out.println("The table 'users_table' has not been deleted!" + e);
@@ -46,9 +46,9 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
 
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(2, name);
-            preparedStatement.setString(3, lastName);
-            preparedStatement.setByte(4, age);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

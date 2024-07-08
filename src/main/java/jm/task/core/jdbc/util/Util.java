@@ -21,8 +21,9 @@ public class Util {
 
     public Connection getConnection() throws SQLException {
 
-        Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        try (connection)  {
+        Connection connection = null;
+        try   {
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             Class.forName(DB_DRIVER);
             System.out.println("Connection is successful");
         } catch (ClassNotFoundException | SQLException e) {
