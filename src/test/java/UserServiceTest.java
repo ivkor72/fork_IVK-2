@@ -40,9 +40,9 @@ public class UserServiceTest {
             userService.dropUsersTable();
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
-
+            System.out.println("User Ivan Ivanov is added");
             User user = userService.getAllUsers().get(0);
-
+            System.out.println(user);
             if (!testName.equals(user.getName())
                     || !testLastName.equals(user.getLastName())
                     || testAge != user.getAge()

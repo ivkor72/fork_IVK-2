@@ -81,10 +81,12 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
                 User user = new User();
                 user.setId(resultSet.getLong("id"));
                 user.setName(resultSet.getString("name"));
-                user.setName(resultSet.getString("lastName"));
-                user.setAge(resultSet.getByte("age"));
+                user.setLastName(resultSet.getString("lastName"));
+                user.setAge(Byte.valueOf(resultSet.getString("age")));
                 userList.add(user);
+
             }
+            System.out.println(userList.toString());
 
         } catch (SQLException e) {
             e.printStackTrace();

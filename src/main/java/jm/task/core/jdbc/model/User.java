@@ -1,8 +1,13 @@
 package jm.task.core.jdbc.model;
 
+import com.sun.xml.bind.v2.runtime.output.UTF8XmlOutput;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.nio.charset.Charset;
+
+import static java.nio.charset.Charset.*;
 
 @Table
 public class User {
@@ -63,6 +68,7 @@ public class User {
 
     @Override
     public String toString() {
-        return super.toString();
+        String str = id + " " + name + " " + lastName + " " + age;
+        return  str;
     }
 }
