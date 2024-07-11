@@ -18,11 +18,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
         String sql = "CREATE TABLE IF NOT EXISTS users.users_table(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(45) NOT NULL, lastName VARCHAR(45) NOT NULL, age VARCHAR(45) NOT NULL)";
         try (Connection connection = getConnection(); Statement statement = connection.createStatement()) {
-            if (connection.isClosed())  System.out.println("Connection is closed");
+
             int resultSet = statement.executeUpdate(sql);
-            System.out.println("The table 'users_table' has been created");
+     //       System.out.println("The table 'users_table' has been created");
         } catch (SQLException e) {
-            System.out.println("The table has not been created!" + e);
+     //       System.out.println("The table has not been created!" + e);
         }
 
 
@@ -31,12 +31,12 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     public void dropUsersTable() throws SQLException {
         String sql = "DROP TABLE users. users_table";
         try (Connection connection = getConnection()) {
-            if (connection.isClosed())  System.out.println("Connection is closed");
+    //        if (connection.isClosed())  System.out.println("Connection is closed");
             Statement statement = connection.createStatement();
             int resultSet = statement.executeUpdate(sql);
-            System.out.println("The table 'users_table' has been deleted");
+    //        System.out.println("The table 'users_table' has been deleted");
         } catch (SQLException e) {
-            System.out.println("The table 'users_table' has not been deleted!" + e);
+    //        System.out.println("The table 'users_table' has not been deleted!" + e);
         }
     }
     public void saveUser(String name, String lastName, byte age) throws SQLException {
@@ -86,7 +86,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
                 userList.add(user);
 
             }
-            System.out.println(userList.toString());
+   //         System.out.println(userList.toString());
 
         } catch (SQLException e) {
             e.printStackTrace();

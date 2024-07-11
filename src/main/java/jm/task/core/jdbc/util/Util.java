@@ -25,14 +25,14 @@ public class Util {
         try   {
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             Class.forName(DB_DRIVER);
-            System.out.println("Connection is successful");
+ //           System.out.println("Connection is successful");
         } catch (ClassNotFoundException | SQLException e) {
    //         e.printStackTrace();
-           System.out.println("Connection failed " + e);
+ //          System.out.println("Connection failed " + e);
         }
 
 
         return connection;
     }
 
-} //util
+}
