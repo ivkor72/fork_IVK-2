@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
-    public void cleanUsersTable() {
+    public void cleanUsersTable() throws SQLException {
         userDaoJDBC.cleanUsersTable();
     }
 }
