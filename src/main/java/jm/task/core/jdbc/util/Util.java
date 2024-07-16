@@ -20,4 +20,12 @@ public class Util {
         }
         return connection;
     }
+
+    public static void closeConnection(Connection connection) throws SQLException {
+        try {
+            connection.close();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

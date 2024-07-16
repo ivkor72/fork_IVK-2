@@ -12,6 +12,9 @@ public class UserServiceImpl implements UserService {
 
     private final UserDao userDaoJDBC = new UserDaoJDBCImpl();
 
+    public UserServiceImpl() throws SQLException {
+    }
+
     public void createUsersTable() throws SQLException {
         userDaoJDBC.createUsersTable();
     }
