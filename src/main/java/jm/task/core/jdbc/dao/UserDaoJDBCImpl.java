@@ -32,7 +32,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() throws SQLException {
         String sql = "DROP TABLE users. users_table";
-        try (connection) {
             try (Statement statement = connection.createStatement()) {
                 int resultSet = statement.executeUpdate(sql);
                 connection.commit();
@@ -44,8 +43,8 @@ public class UserDaoJDBCImpl implements UserDao {
                     e.printStackTrace();
                 }
             }
-        }
     }
+
 
     public void saveUser(String name, String lastName, byte age) throws SQLException {
         String sql = "INSERT INTO users.users_table (id, name, lastName, age) VALUES (default, ?, ?, ?)";
