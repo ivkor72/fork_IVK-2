@@ -8,9 +8,9 @@ public class Util {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/users";
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "IVK_student_kata-71";
+    private static Connection connection = null;
 
     public static Connection getConnection() throws SQLException {
-        Connection connection = null;
         try   {
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             Class.forName(DB_DRIVER);
@@ -21,7 +21,7 @@ public class Util {
         return connection;
     }
 
-    public static void closeConnection(Connection connection) throws SQLException {
+    public static void closeConnection() throws SQLException {
         try {
             connection.close();
         } catch (SQLException e){
