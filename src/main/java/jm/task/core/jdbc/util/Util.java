@@ -1,7 +1,14 @@
 package jm.task.core.jdbc.util;
 
+import org.hibernate.Session;
+import org.hibernate.SessionException;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
+
 import java.sql.*;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Util {
     private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -9,6 +16,7 @@ public class Util {
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "IVK_student_kata-71";
     private static Connection connection = null;
+    private static SessionFactory sessionFactory = null;
 
     public static Connection getConnection() throws SQLException {
         try   {
@@ -28,4 +36,16 @@ public class Util {
             e.printStackTrace();
         }
     }
+
+    public static SessionFactory getSessionFactory() {
+        Properties properties = new Properties();
+        properties.put(Environment.DRIVER, DB_DRIVER);
+        properties.put(Environment.URL, DB_URL);
+        properties.put(Environment.USER, DB_USERNAME);
+        properties.put(Environment.PASS, DB_PASSWORD);
+        sessionFactory = new Configuration().setProperties(properties).buildSessionFactory();
+        return sessionFactory;
+    }
+
+
 }

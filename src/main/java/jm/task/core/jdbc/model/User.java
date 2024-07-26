@@ -3,13 +3,15 @@ package jm.task.core.jdbc.model;
 import com.sun.xml.bind.v2.runtime.output.UTF8XmlOutput;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.nio.charset.Charset;
 
 import static java.nio.charset.Charset.*;
 
-@Table
+@Entity
+@Table (name = "users_table")
 public class User {
     @Id
     private Long id;
