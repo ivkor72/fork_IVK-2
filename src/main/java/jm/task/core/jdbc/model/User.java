@@ -1,11 +1,9 @@
 package jm.task.core.jdbc.model;
 
 import com.sun.xml.bind.v2.runtime.output.UTF8XmlOutput;
+import org.hibernate.annotations.ValueGenerationType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.nio.charset.Charset;
 
 import static java.nio.charset.Charset.*;
@@ -14,6 +12,7 @@ import static java.nio.charset.Charset.*;
 @Table (name = "users_table")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

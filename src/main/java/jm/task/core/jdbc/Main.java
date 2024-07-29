@@ -20,6 +20,7 @@ public class Main {
         System.out.println(userList);
         userService.cleanUsersTable();
         userService.dropUsersTable();
-        Util.closeConnection();
+ //       Util.closeConnection();
+        Util.closeSessionFactory();
     }
 }

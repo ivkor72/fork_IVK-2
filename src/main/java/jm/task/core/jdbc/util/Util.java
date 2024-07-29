@@ -1,10 +1,12 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
+//import jakarta.persistence.Entity;
 
 import java.sql.*;
 import java.sql.SQLException;
@@ -43,9 +45,18 @@ public class Util {
         properties.put(Environment.URL, DB_URL);
         properties.put(Environment.USER, DB_USERNAME);
         properties.put(Environment.PASS, DB_PASSWORD);
-        sessionFactory = new Configuration().setProperties(properties).buildSessionFactory();
+        try {
+            sessionFactory = new Configuration()
+                    .setProperties(properties)
+                    .addAnnotatedClass(User.class)
+                    .buildSessionFactory();
+        } catch (SessionException e) {
+            e.printStackTrace();
+        }
         return sessionFactory;
     }
 
-
+    public static void closeSessionFactory() {
+        if (sessionFactory != null) sessionFactory.close();
+    }
 }
