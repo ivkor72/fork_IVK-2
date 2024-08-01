@@ -13,11 +13,10 @@ import java.util.List;
 public class UserDaoHibernateImpl implements UserDao {
 
     private final SessionFactory sessionFactory = Util.getSessionFactory();
-    private  Session session;
 
     @Override
     public void createUsersTable() {
-
+        Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -34,6 +33,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void dropUsersTable() {
+        Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -51,6 +51,7 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public void saveUser(String name, String lastName, byte age) {
         User user = new User(name, lastName, age);
+        Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -67,6 +68,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void removeUserById(long id) {
+        Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -83,6 +85,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
+        Session session = null;
         List<User> userList = null;
         try {
             session = sessionFactory.openSession();
@@ -100,6 +103,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void cleanUsersTable() {
+        Session session = null;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
